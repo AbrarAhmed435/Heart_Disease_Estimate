@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diabetes Prediction</title>
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
+  <body>
+    <h1>💘Heart Disease Prediction</h1>
+    <div class="container">
+      <form method="POST" action="/predict">
+        <div class="box">
+          <label for="feature1">Age:</label><br />
+          <input type="text" name="feature1" required />
+        </div>
+        <div class="box">
+          <label for="feature2">Sex(Male:1,Female:0):</label><br />
+          <input type="text" name="feature2" required />
+        </div>
+        <div class="box">
+          <label for="feature3">cp:</label><br />
+          <input type="text" name="feature3" required />
+        </div>
+        <div class="box">
+          <label for="feature4">trestbps:</label><br />
+          <input type="text" name="feature4" required />
+        </div>
+        <div class="box">
+          <label for="feature5">chol:</label><br />
+          <input type="text" name="feature5" required />
+        </div>
+        <div class="box">
+          <label for="feature8">fbs:</label><br />
+          <input type="text" name="feature13" required />
+        </div>
+        <div class="box">
+          <label for="feature6">restecg:</label><br />
+          <input type="text" name="feature6" required />
+        </div>
+        <div class="box">
+          <label for="feature7">thalach:</label><br />
+          <input type="text" name="feature7" required />
+        </div>
+        <div class="box">
+          <label for="feature8">exang:</label><br />
+          <input type="text" name="feature8" required />
+        </div>
+        <div class="box">
+          <label for="feature8">oldpeak:</label><br />
+          <input type="text" name="feature9" required />
+        </div>
+        <div class="box">
+          <label for="feature8">slope:</label><br />
+          <input type="text" name="feature10" required />
+        </div>
+        <div class="box">
+          <label for="feature8">ca:</label><br />
+          <input type="text" name="feature11" required />
+        </div>
+        <div class="box">
+          <label for="feature8">thal:</label><br />
+          <input type="text" name="feature12" required />
+        </div>
+
+        <div class="box" id="predict_box">
+          <button type="submit" id="predict">Predict</button>
+        </div>
+      </form>
+
+      <!-- Prediction result will appear here -->
+
+      {% if prediction_text is not none %} {% if prediction_text == "Positive"
+      %}
+      <div class="prediction">
+        <h3 style="color: red">
+          ⚠️ Your Heart looks Unhealthy. Please visit your doctor 🧑‍⚕️
+        </h3>
+      </div>
+      {% elif prediction_text == "Negative" %}
+      <div class="prediction">
+        <h3 style="color: green">
+          Congratulations 🎉, Your Heart💖 Looks Healthy
+        </h3>
+      </div>
+      {% else %}
+      <div><h4 style="color: orange">{{ prediction_text }}</h4></div>
+      <!-- Handle error messages -->
+      {% endif %} {% endif %}
+    </div>
+  </body>
+</html>
